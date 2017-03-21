@@ -1,0 +1,4 @@
+{
+  "name": "target",
+  "description": "Copies build artifacts to target folder."
+}

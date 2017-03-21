@@ -28,7 +28,10 @@
     "id": "sass",
     "displayName": "Sass",
     "fileExtension": ".scss",
-    "source": "src/**/*.scss"
+    "source": [
+      "src/**/*.scss",
+      "src/*.scss"
+    ]
   },
   "editor": {
     "id": "sublime",
