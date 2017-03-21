@@ -1,21 +1,21 @@
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import historyApiFallback from 'connect-history-api-fallback/lib';
-import project from '../aurelia.json';
-import build from './build';
-import {CLIOptions} from 'aurelia-cli';
+import gulp from 'gulp'
+import browserSync from 'browser-sync'
+import historyApiFallback from 'connect-history-api-fallback/lib'
+import project from '../aurelia.json'
+import build from './build'
+import {CLIOptions} from 'aurelia-cli'
 
 function log(message) {
-  console.log(message); //eslint-disable-line no-console
+  console.log(message) //eslint-disable-line no-console
 }
 
 function onChange(path) {
-  log(`File Changed: ${path}`);
+  log(`File Changed: ${path}`)
 }
 
 function reload(done) {
-  browserSync.reload();
-  done();
+  browserSync.reload()
+  done()
 }
 
 let serve = gulp.series(
@@ -29,47 +29,47 @@ let serve = gulp.series(
       server: {
         baseDir: ['.'],
         middleware: [historyApiFallback(), function(req, res, next) {
-          res.setHeader('Access-Control-Allow-Origin', '*');
-          next();
+          res.setHeader('Access-Control-Allow-Origin', '*')
+          next()
         }]
       }
     }, function(err, bs) {
-      let urls = bs.options.get('urls').toJS();
-      log(`Application Available At: ${urls.local}`);
-      log(`BrowserSync Available At: ${urls.ui}`);
-      done();
-    });
+      let urls = bs.options.get('urls').toJS()
+      log(`Application Available At: ${urls.local}`)
+      log(`BrowserSync Available At: ${urls.ui}`)
+      done()
+    })
   }
-);
+)
 
 let refresh = gulp.series(
   build,
   reload
-);
+)
 
 let watch = function(refreshCb, onChangeCb) {
   return function(done) {
-    gulp.watch(project.transpiler.source, refreshCb).on('change', onChangeCb);
-    gulp.watch(project.markupProcessor.source, refreshCb).on('change', onChangeCb);
-    gulp.watch(project.cssProcessor.source, refreshCb).on('change', onChangeCb);
+    gulp.watch(project.transpiler.source, refreshCb).on('change', onChangeCb)
+    gulp.watch(project.markupProcessor.source, refreshCb).on('change', onChangeCb)
+    gulp.watch(project.cssProcessor.source, refreshCb).on('change', onChangeCb)
 
     //see if there are static files to be watched
     if (typeof project.build.copyFiles === 'object') {
-      const files = Object.keys(project.build.copyFiles);
-      gulp.watch(files, refreshCb).on('change', onChangeCb);
+      const files = Object.keys(project.build.copyFiles)
+      gulp.watch(files, refreshCb).on('change', onChangeCb)
     }
-  };
-};
+  }
+}
 
-let run;
+let run
 
 if (CLIOptions.hasFlag('watch')) {
   run = gulp.series(
     serve,
     watch(refresh, onChange)
-  );
+  )
 } else {
-  run = serve;
+  run = serve
 }
 
-export { run as default, watch };
+export { run as default, watch }
