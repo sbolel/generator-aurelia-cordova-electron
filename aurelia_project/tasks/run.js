@@ -5,15 +5,15 @@ import project from '../aurelia.json'
 import build from './build'
 import {CLIOptions} from 'aurelia-cli'
 
-function log(message) {
-  console.log(message) //eslint-disable-line no-console
+function log (message) {
+  console.log(message) // eslint-disable-line no-console
 }
 
-function onChange(path) {
+function onChange (path) {
   log(`File Changed: ${path}`)
 }
 
-function reload(done) {
+function reload (done) {
   browserSync.reload()
   done()
 }
@@ -28,12 +28,12 @@ let serve = gulp.series(
       logLevel: 'silent',
       server: {
         baseDir: ['.'],
-        middleware: [historyApiFallback(), function(req, res, next) {
+        middleware: [historyApiFallback(), function (req, res, next) {
           res.setHeader('Access-Control-Allow-Origin', '*')
           next()
         }]
       }
-    }, function(err, bs) {
+    }, function (err, bs) {
       let urls = bs.options.get('urls').toJS()
       log(`Application Available At: ${urls.local}`)
       log(`BrowserSync Available At: ${urls.ui}`)
@@ -47,13 +47,13 @@ let refresh = gulp.series(
   reload
 )
 
-let watch = function(refreshCb, onChangeCb) {
-  return function(done) {
+let watch = function (refreshCb, onChangeCb) {
+  return function (done) {
     gulp.watch(project.transpiler.source, refreshCb).on('change', onChangeCb)
     gulp.watch(project.markupProcessor.source, refreshCb).on('change', onChangeCb)
     gulp.watch(project.cssProcessor.source, refreshCb).on('change', onChangeCb)
 
-    //see if there are static files to be watched
+    // see if there are static files to be watched
     if (typeof project.build.copyFiles === 'object') {
       const files = Object.keys(project.build.copyFiles)
       gulp.watch(files, refreshCb).on('change', onChangeCb)

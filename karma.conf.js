@@ -16,20 +16,24 @@ let files = [entryBundle].concat(testSrc).concat(appSrc)
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: [project.testFramework.id],
     files: files,
     exclude: [],
+
+    browsers: ['PhantomJS'],
+    frameworks: [project.testFramework.id],
+    reporters: ['progress'],
+
+    autoWatch: true,
+    singleRun: false,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    port: 9876,
+
+    babelPreprocessor: { options: project.transpiler.options },
     preprocessors: {
       [project.unitTestRunner.source]: [project.transpiler.id]
     },
-    'babelPreprocessor': { options: project.transpiler.options },
-    reporters: ['progress'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
+
     // client.args must be a array of string.
     // Leave 'aurelia-root', project.paths.root in this order so we can find
     // the root of the aurelia project.

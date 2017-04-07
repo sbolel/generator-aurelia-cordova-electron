@@ -8,7 +8,7 @@ import rename from 'gulp-rename'
 import project from '../aurelia.json'
 import {CLIOptions, build} from 'aurelia-cli'
 
-function configureEnvironment() {
+function configureEnvironment () {
   let env = CLIOptions.getEnvironment()
 
   return gulp.src(`aurelia_project/environments/${env}.js`)
@@ -17,7 +17,7 @@ function configureEnvironment() {
     .pipe(gulp.dest(project.paths.root))
 }
 
-function buildJavaScript() {
+function buildJavaScript () {
   return gulp.src(project.transpiler.source)
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(changedInPlace({firstPass: true}))

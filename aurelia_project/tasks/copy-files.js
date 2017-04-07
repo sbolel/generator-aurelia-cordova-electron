@@ -3,7 +3,7 @@ import path from 'path'
 import changedInPlace from 'gulp-changed-in-place'
 import project from '../aurelia.json'
 
-export default function copyFiles(done) {
+export default function copyFiles (done) {
   if (typeof project.build.copyFiles !== 'object') {
     done()
     return
@@ -21,7 +21,7 @@ export default function copyFiles(done) {
     }))
 }
 
-function getNormalizedInstruction() {
+function getNormalizedInstruction () {
   const files = project.build.copyFiles
   let normalizedInstruction = {}
 
@@ -32,10 +32,10 @@ function getNormalizedInstruction() {
   return normalizedInstruction
 }
 
-function prepareFilePath(filePath) {
+function prepareFilePath (filePath) {
   let preparedPath = filePath.replace(process.cwd(), '').substring(1)
 
-  //if we are running on windows we have to fix the path
+  // if we are running on windows we have to fix the path
   if (/^win/.test(process.platform)) {
     preparedPath = preparedPath.replace(/\\/g, '/')
   }
