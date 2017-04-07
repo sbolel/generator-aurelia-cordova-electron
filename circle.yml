@@ -5,7 +5,7 @@ executorType: docker
 containerInfo:
   - image: node:7.5.0
     env:
-      - NODE_ENV=test
+      - NODE_ENV=prod
 
 stages:
 
