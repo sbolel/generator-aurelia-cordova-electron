@@ -1,12 +1,26 @@
 {
-  "name": "generator-aurelia",
+  "name": "generator-aurelia-cordova-electron",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
-  "repository": {
-    "type": "???",
-    "url": "???"
+  "author": {
+    "name" : "Sinan Bolel",
+    "email" : "hi@sinanbolel.com",
+    "url" : "https://sinanbolel.com/"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sbolel/generator-aurelia-cordova-electron"
+  },
+  "bugs": {
+    "url" : "https://github.com/sbolel/generator-aurelia-cordova-electron/issues",
+    "email" : "hi@sinanbolel.com"
+  },
+  "scripts": {
+    "build": "au build --env prod",
+    "start": "au run",
+    "test": "au test"
+  },
   "dependencies": {
     "aurelia-animator-css": "^1.0.2",
     "aurelia-bootstrapper": "^2.1.1",
@@ -56,5 +70,13 @@
     "through2": "^2.0.3",
     "uglify-js": "^2.8.21",
     "vinyl-fs": "^2.4.4"
-  }
+  },
+  "keywords": [
+    "aurelia",
+    "aurelia-cli",
+    "cordova",
+    "electron",
+    "generator",
+    "starter"
+  ]
 }
