@@ -23,11 +23,10 @@ export default gulp.series(
   target
 )
 
-function readProjectConfiguration() {
+function readProjectConfiguration () {
   return build.src(project)
 }
 
-function writeBundles() {
+function writeBundles () {
   return build.dest()
 }
-

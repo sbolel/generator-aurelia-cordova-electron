@@ -10,7 +10,7 @@ import {build} from 'aurelia-cli'
 
 const VENDOR_CSS_PATH = './assets/css/index.css'
 
-export default function processCSS() {
+export default function processCSS () {
   return gulp.src(project.cssProcessor.source)
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.init())
@@ -32,4 +32,3 @@ export default function processCSS() {
     // .pipe(gulp.dest('www'))
     .pipe(build.bundle())
 }
-

@@ -4,11 +4,11 @@ import {CLIOptions} from 'aurelia-cli'
 import build from './build'
 import {watch} from './run'
 
-function log(message) {
-  console.log(message) //eslint-disable-line no-console
+function log (message) {
+  console.log(message) // eslint-disable-line no-console
 }
 
-function onChange(path) {
+function onChange (path) {
   log(`File Changed: ${path}`)
 }
 

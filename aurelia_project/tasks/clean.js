@@ -7,11 +7,10 @@ export default gulp.parallel(
   scripts
 )
 
-function index(done) {
+function index (done) {
   return del('www/index.html', () => done())
 }
 
-function scripts(done) {
+function scripts (done) {
   return del('www/scripts/*+(.js|.js.map)', () => done())
 }
-
