@@ -1,12 +1,17 @@
 {
-  "name": "generator-aurelia",
+  "name": "generator-aurelia-cordova-electron",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "repository": {
-    "type": "???",
-    "url": "???"
+    "type": "git",
+    "url": "https://github.com/sbolel/generator-aurelia-cordova-electron"
   },
   "license": "MIT",
+  "scripts": {
+    "build": "au build --env prod",
+    "start": "au run",
+    "test": "au test"
+  },
   "dependencies": {
     "aurelia-animator-css": "^1.0.2",
     "aurelia-bootstrapper": "^2.1.1",
